@@ -23,15 +23,15 @@ public class UIManager : MonoBehaviour
         
     }
 
-    /*public void Character(int selection)
+    public void CharacterSelectionDrop(int selection)
     {
         for (int i = 0; i < Characters.Length; i++)
         {
             if (i == selection)
             {
-               
+                CharacterSelection.GetComponent<Image>().sprite = Characters[i];
             }
         }
     }
-    */
+    
 }
