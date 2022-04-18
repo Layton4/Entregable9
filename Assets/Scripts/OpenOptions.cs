@@ -6,24 +6,14 @@ public class OpenOptions: MonoBehaviour
 {
     public GameObject OptionPanel;
     public GameObject MenuPanel;
-    void Start()
-    {
-       
-    }
 
-    
-    void Update()
-    {
-        
-    }
-
-    public void OpenOptionPanel()
+    public void OpenOptionPanel() //al pulsar el botón options queremos que desactive el panel del menu y active el panel de opciones
     {
         MenuPanel.SetActive(false);
         OptionPanel.SetActive(true);
     }
 
-    public void CloseOptionPanel()
+    public void CloseOptionPanel() //si le damos al botón de volver apagaremos el panel de opciones y activaremos nuevamente el panel del menu.
     {
         OptionPanel.SetActive(false);
         MenuPanel.SetActive(true);
