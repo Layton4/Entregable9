@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ToolTIP : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
     public void activateToolTip()
     {
         gameObject.SetActive(true);

@@ -10,16 +10,6 @@ public class UIManager : MonoBehaviour
 {
     public Sprite[] Characters;
     public Image CharacterSelection;
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 
     public void CharacterSelectionDrop(int selection) //funcion para que haga lo necesario segun que opcion del desplegable marquemos, selection.
     {
