@@ -15,7 +15,8 @@ public class Menu_Manager : MonoBehaviour
 
     
     private int LevelSelected; //para el color y el numero de nivel (int)
-    private float volumeLevel; //registrar a que value está el slider (float)
+    private float volumeLevel;//registrar a que value está el slider (float)
+    private int intBoolMusic; //int que estará asociado el valor del toogle
     private bool musicToogle; //para saber si queremos la música activa o no (bool)
     private string CharacterName; //Para guardar el nombre del personaje Elegido (str)
     
@@ -23,6 +24,7 @@ public class Menu_Manager : MonoBehaviour
     void Start()
     {
         volumeLevel = volumeSlider.GetComponent<Slider>().value;
+        LoadUserOptions();
     }
 
     void Update()
@@ -36,7 +38,7 @@ public class Menu_Manager : MonoBehaviour
         DataPersistance.SharedInfo.Level = LevelSelected;
         DataPersistance.SharedInfo.volume = volumeLevel;
 
-        DataPersistance.SharedInfo.music = musicToogle;
+        DataPersistance.SharedInfo.music = intBoolMusic;
 
         DataPersistance.SharedInfo.Name = CharacterName;
 
@@ -55,6 +57,8 @@ public class Menu_Manager : MonoBehaviour
             ChangeLevelSelection();
 
             CharacterName = PlayerPrefs.GetString("NAME");
+
+            intBoolMusic = PlayerPrefs.GetInt("MUSIC");
         }
     }
 
@@ -63,6 +67,14 @@ public class Menu_Manager : MonoBehaviour
     public void BoolMusic()
     {
         musicToogle = VolumeToogle.GetComponent<Toggle>().isOn;
+        if(musicToogle)
+        {
+            intBoolMusic = 1;
+        }
+        else
+        {
+            intBoolMusic = 0;
+        }
     }
     #endregion
 

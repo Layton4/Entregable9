@@ -6,10 +6,10 @@ public class DataPersistance : MonoBehaviour
 {
     public static DataPersistance SharedInfo;
     //datos que querremos conservar de una escena a otra
-    public int Level;
-    public float volume;
-    public bool music;
-    public string Name;
+    public int Level; //numero de nivel en el que estás
+    public float volume; //valor del slider de volume
+    public int music; //valor 0 o 1 del bool
+    public string Name; //nombre del personaje elegido
 
     //Para que la instancia sea única
     private void Awake()
@@ -38,7 +38,7 @@ public class DataPersistance : MonoBehaviour
 
         //Music
 
-        //PlayerPrefs.SetBool("MUSIC", music); //pregunta a Maria como lo haría
+        PlayerPrefs.SetInt("MUSIC", music);
 
         // Nombre
         PlayerPrefs.SetString("NAME", Name);
