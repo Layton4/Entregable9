@@ -30,6 +30,7 @@ public class Menu_Manager : MonoBehaviour
     void Update()
     {
         LevelSelection();
+        CharacterSelection();
     }
 
     public void SaveUserOptions()
@@ -51,10 +52,12 @@ public class Menu_Manager : MonoBehaviour
         // Tal y como lo hemos configurado, si tiene esta clave, entonces tiene todas
         if (PlayerPrefs.HasKey("LEVEL"))
         {
+            //ChangeLevelSelection();
+            //CharacterSelection();
             LevelSelected = PlayerPrefs.GetInt("LEVEL");
 
             volumeLevel = PlayerPrefs.GetFloat("VOLUME");
-            ChangeLevelSelection();
+            
 
             CharacterName = PlayerPrefs.GetString("NAME");
 
@@ -67,13 +70,13 @@ public class Menu_Manager : MonoBehaviour
     public void BoolMusic()
     {
         musicToogle = VolumeToogle.GetComponent<Toggle>().isOn;
-        if(musicToogle)
+        if(musicToogle == true)
         {
-            intBoolMusic = 1;
+            intBoolMusic = 0;
         }
         else
         {
-            intBoolMusic = 0;
+            intBoolMusic = 1;
         }
     }
     #endregion
