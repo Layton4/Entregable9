@@ -602,6 +602,7 @@ MonoBehaviour:
   volume: 0
   music: 0
   Name: 
+  CharacterSlot: 0
 --- !u!4 &226706224
 Transform:
   m_ObjectHideFlags: 0
@@ -2340,6 +2341,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 02a8dc4f1d6248a41aeb2ab624a2e260, type: 3}
   - {fileID: 21300000, guid: ad8d6630b0dcc7b4c8f759a5b48cec45, type: 3}
   - {fileID: 21300000, guid: 43b9d1c05d452ce4c97b62f341aaab56, type: 3}
+  CharactersNames:
+  - Luz
+  - Amity
+  - Eda
+  - Lilith
   CharacterSelection: {fileID: 1447813739}
 --- !u!114 &611055771
 MonoBehaviour:
@@ -2424,7 +2430,8 @@ MonoBehaviour:
   - {fileID: 295045177}
   volumeSlider: {fileID: 1901971807}
   VolumeToogle: {fileID: 900116552}
-  Character: {fileID: 701857340}
+  CharacterSelected: 
+  DropDownCharacters: {fileID: 858028822}
 --- !u!4 &643510144
 Transform:
   m_ObjectHideFlags: 0

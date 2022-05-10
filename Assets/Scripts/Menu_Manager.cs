@@ -11,7 +11,9 @@ public class Menu_Manager : MonoBehaviour
     public GameObject[] color;
     public GameObject volumeSlider;
     public GameObject VolumeToogle;
-    public TextMeshProUGUI Character;
+    //public TextMeshProUGUI Character;
+    public string CharacterSelected;
+    public GameObject DropDownCharacters;
 
     
     private int LevelSelected; //para el color y el numero de nivel (int)
@@ -25,6 +27,17 @@ public class Menu_Manager : MonoBehaviour
     {
         volumeLevel = volumeSlider.GetComponent<Slider>().value;
         LoadUserOptions();
+        if(intBoolMusic == 0)
+        {
+            VolumeToogle.GetComponent<Toggle>().isOn = true;
+        }
+        else
+        {
+            VolumeToogle.GetComponent<Toggle>().isOn = false;
+        }
+
+        
+        
     }
 
     void Update()
@@ -57,7 +70,8 @@ public class Menu_Manager : MonoBehaviour
             LevelSelected = PlayerPrefs.GetInt("LEVEL");
 
             volumeLevel = PlayerPrefs.GetFloat("VOLUME");
-            
+
+            DropDownCharacters.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("CHARACTER_SLOT");
 
             CharacterName = PlayerPrefs.GetString("NAME");
 
@@ -84,7 +98,7 @@ public class Menu_Manager : MonoBehaviour
     #region Character name
     public void CharacterSelection()
     {
-        CharacterName = Character.text;
+        CharacterName = CharacterSelected;
     }
     #endregion
 
@@ -107,7 +121,7 @@ public class Menu_Manager : MonoBehaviour
         {
             LevelSelected--;
         }
-        LevelSelected %= 3;
+        LevelSelected = LevelSelected % 3;
         ChangeLevelSelection();
     }
 

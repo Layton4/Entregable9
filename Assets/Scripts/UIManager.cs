@@ -9,12 +9,16 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Sprite[] Characters;
+    public string[] CharactersNames;
     public Image CharacterSelection;
+    
+
     private Menu_Manager Menu_ManagerScript;
 
     public void Start()
     {
         Menu_ManagerScript = GameObject.Find("Menu_Manager").GetComponent<Menu_Manager>();
+
     }
     public void CharacterSelectionDrop(int selection) //funcion para que haga lo necesario segun que opcion del desplegable marquemos, selection.
     {
@@ -23,6 +27,8 @@ public class UIManager : MonoBehaviour
             if (i == selection) //nuestra elección es una posición del desplegable, y cuando detectemos en que posición hemos clicado
             {
                 CharacterSelection.GetComponent<Image>().sprite = Characters[i]; //accedemos al componente imagen de la imagen que hemos colocado le podemos cambiar el sprite segun  lo que hayamos elegido
+                Menu_ManagerScript.CharacterSelected = CharactersNames[i];
+                DataPersistance.SharedInfo.CharacterSlot = i;
             }
         }
     }
