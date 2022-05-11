@@ -24,5 +24,6 @@ public class ScenesManager : MonoBehaviour
     public void GameScene()
     {
         SceneManager.LoadScene("Game");
+        DataPersistance.SharedInfo.SaveForFutureGames();
     }
 }

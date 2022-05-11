@@ -21,13 +21,20 @@ public class Menu_Manager : MonoBehaviour
     private int intBoolMusic; //int que estará asociado el valor del toogle
     private bool musicToogle; //para saber si queremos la música activa o no (bool)
     private string CharacterName; //Para guardar el nombre del personaje Elegido (str)
+    private int DropdownIndx;
     
 
     void Start()
     {
-        volumeLevel = volumeSlider.GetComponent<Slider>().value;
+        
         LoadUserOptions();
-        if(intBoolMusic == 0)
+
+        
+        
+        volumeLevel = DataPersistance.SharedInfo.volume;
+        volumeSlider.GetComponent<Slider>().value = volumeLevel;
+
+        if (intBoolMusic == 0)
         {
             VolumeToogle.GetComponent<Toggle>().isOn = true;
         }
@@ -56,6 +63,8 @@ public class Menu_Manager : MonoBehaviour
 
         DataPersistance.SharedInfo.Name = CharacterName;
 
+        DataPersistance.SharedInfo.CharacterSlotInt = DropdownIndx;
+
         // Persistencia de datos entre partidas
         DataPersistance.SharedInfo.SaveForFutureGames();
     }
@@ -71,7 +80,7 @@ public class Menu_Manager : MonoBehaviour
 
             volumeLevel = PlayerPrefs.GetFloat("VOLUME");
 
-            DropDownCharacters.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("CHARACTER_SLOT");
+            DropdownIndx = PlayerPrefs.GetInt("CHARACTER_SLOT");
 
             CharacterName = PlayerPrefs.GetString("NAME");
 

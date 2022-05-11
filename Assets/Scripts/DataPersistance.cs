@@ -10,7 +10,7 @@ public class DataPersistance : MonoBehaviour
     public float volume; //valor del slider de volume
     public int music; //valor 0 o 1 del bool
     public string Name; //nombre del personaje elegido
-    public int CharacterSlot;
+    public int CharacterSlotInt;
 
     //Para que la instancia sea única
     private void Awake()
@@ -42,7 +42,8 @@ public class DataPersistance : MonoBehaviour
         PlayerPrefs.SetInt("MUSIC", music);
 
         // Nombre
-        PlayerPrefs.SetInt("CHARACTER_SLOT", CharacterSlot);
+        PlayerPrefs.SetInt("CHARACTER_SLOT", CharacterSlotInt);
+
         PlayerPrefs.SetString("NAME", Name);
     }
 

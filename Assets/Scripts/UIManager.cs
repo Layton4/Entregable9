@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
             {
                 CharacterSelection.GetComponent<Image>().sprite = Characters[i]; //accedemos al componente imagen de la imagen que hemos colocado le podemos cambiar el sprite segun  lo que hayamos elegido
                 Menu_ManagerScript.CharacterSelected = CharactersNames[i];
-                DataPersistance.SharedInfo.CharacterSlot = i;
+                DataPersistance.SharedInfo.CharacterSlotInt = i;
             }
         }
     }

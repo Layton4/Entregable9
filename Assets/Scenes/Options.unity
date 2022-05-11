@@ -602,7 +602,7 @@ MonoBehaviour:
   volume: 0
   music: 0
   Name: 
-  CharacterSlot: 0
+  CharacterSlotInt: 0
 --- !u!4 &226706224
 Transform:
   m_ObjectHideFlags: 0
