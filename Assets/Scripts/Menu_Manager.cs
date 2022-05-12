@@ -26,13 +26,13 @@ public class Menu_Manager : MonoBehaviour
 
     void Start()
     {
-        
-        LoadUserOptions();
 
-        
-        
-        volumeLevel = DataPersistance.SharedInfo.volume;
-        volumeSlider.GetComponent<Slider>().value = volumeLevel;
+
+
+
+        volumeLevel = volumeSlider.GetComponent<Slider>().value;
+
+        LoadUserOptions();
 
         if (intBoolMusic == 0)
         {
