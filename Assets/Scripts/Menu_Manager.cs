@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
 public class Menu_Manager : MonoBehaviour
 {
 
-    public GameObject[] color;
-    public GameObject volumeSlider;
-    public GameObject VolumeToogle;
+    public GameObject[] color; //Donde seleccionaremos el nivel que hemos elegido
+    public GameObject volumeSlider; //donde sacaremos el value (float)
+    public GameObject VolumeToogle; //donde sacaremos el isOn (bool que se convierte en int)
     //public TextMeshProUGUI Character;
     public string CharacterSelected;
-    public GameObject DropDownCharacters;
+    public TextMeshProUGUI DropdownLabelText; //donde sacaremos que slot de personaje hemos seleccioando (int que usaré para tener un string)
+    public GameObject CharacterImage;
+    public Sprite[] Characters;
 
     
     private int LevelSelected; //para el color y el numero de nivel (int)
@@ -26,34 +27,15 @@ public class Menu_Manager : MonoBehaviour
 
     void Start()
     {
-
-
-
-
-        volumeLevel = volumeSlider.GetComponent<Slider>().value;
-
-        LoadUserOptions();
-
-        if (intBoolMusic == 0)
-        {
-            VolumeToogle.GetComponent<Toggle>().isOn = true;
-        }
-        else
-        {
-            VolumeToogle.GetComponent<Toggle>().isOn = false;
-        }
-
-        
-        
+        LoadUserOptions();        
     }
 
     void Update()
     {
         LevelSelection();
-        CharacterSelection();
     }
 
-    public void SaveUserOptions()
+    public void SaveUserOptions() //cuando se ejecuta guarda en el data persitance las variables en su respectiva caja
     {
         // Persistencia de datos entre escenas
         DataPersistance.SharedInfo.Level = LevelSelected;
@@ -75,21 +57,37 @@ public class Menu_Manager : MonoBehaviour
         if (PlayerPrefs.HasKey("LEVEL"))
         {
             //ChangeLevelSelection();
-            //CharacterSelection();
-            LevelSelected = PlayerPrefs.GetInt("LEVEL");
+            LevelSelected = PlayerPrefs.GetInt("LEVEL"); //Lo actualiza el changeLevelSelection
 
-            volumeLevel = PlayerPrefs.GetFloat("VOLUME");
+            volumeLevel = PlayerPrefs.GetFloat("VOLUME"); //obtenemos el volumen de la partida anterior
+            LoadVolume(); //y lo metemos en el slider
 
             DropdownIndx = PlayerPrefs.GetInt("CHARACTER_SLOT");
 
             CharacterName = PlayerPrefs.GetString("NAME");
 
-            intBoolMusic = PlayerPrefs.GetInt("MUSIC");
+            LoadCharacter();
+
+            intBoolMusic = PlayerPrefs.GetInt("MUSIC"); //obtenemos si estaba apagada o encendida la música antes
+            LoadToogle(); //cambiamos el toogle según si estaba apagada o encendida
+
         }
     }
 
 
     #region Music Toogle
+
+    public void LoadToogle()
+    {
+        if (intBoolMusic == 0)
+        {
+            VolumeToogle.GetComponent<Toggle>().isOn = true;
+        }
+        else
+        {
+            VolumeToogle.GetComponent<Toggle>().isOn = false;
+        }
+    }
     public void BoolMusic()
     {
         musicToogle = VolumeToogle.GetComponent<Toggle>().isOn;
@@ -109,9 +107,20 @@ public class Menu_Manager : MonoBehaviour
     {
         CharacterName = CharacterSelected;
     }
+
+    public void LoadCharacter()
+    {
+        CharacterImage.GetComponent<Image>().sprite = Characters[DropdownIndx];
+        DropdownLabelText.text = CharacterName;
+    }
     #endregion
 
     #region UpdateVolume
+
+    public void LoadVolume()
+    {
+        volumeSlider.GetComponent<Slider>().value = volumeLevel;
+    }
     public void VolumeSelection()
     {
         volumeLevel = volumeSlider.GetComponent<Slider>().value;

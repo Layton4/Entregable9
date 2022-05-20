@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public void Start()
     {
         Menu_ManagerScript = GameObject.Find("Menu_Manager").GetComponent<Menu_Manager>();
-
+        Menu_ManagerScript.LoadUserOptions();
     }
     public void CharacterSelectionDrop(int selection) //funcion para que haga lo necesario segun que opcion del desplegable marquemos, selection.
     {
