@@ -15,6 +15,7 @@ public class Menu_Manager : MonoBehaviour
     public TextMeshProUGUI DropdownLabelText; //donde sacaremos que slot de personaje hemos seleccioando (int que usaré para tener un string)
     public GameObject CharacterImage;
     public Sprite[] Characters;
+    public TMP_Dropdown Dropdowntest;
 
     
     private int LevelSelected; //para el color y el numero de nivel (int)
@@ -27,7 +28,8 @@ public class Menu_Manager : MonoBehaviour
 
     void Start()
     {
-        LoadUserOptions();        
+        LoadUserOptions();
+        SaveUserOptions();
     }
 
     void Update()
