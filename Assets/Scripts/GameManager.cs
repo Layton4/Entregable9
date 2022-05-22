@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager SharedInfo;
     public TextMeshProUGUI characterName; //str
     public TextMeshProUGUI Level; //int
     public TextMeshProUGUI Volume; //float
@@ -15,19 +14,6 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] MuteImages; //array de sprites para cambiar la imagen del boton segun si la música está activada o desactivada
  
-
-
-    private void Awake()
-    {
-        if (SharedInfo == null)
-        {
-            SharedInfo = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
     void Start()
     {
         Music = GameObject.Find("Main Camera").GetComponent<AudioSource>();
@@ -60,13 +46,14 @@ public class GameManager : MonoBehaviour
     {
         Music.UnPause();
         DataPersistance.SharedInfo.music = 0;
-        //DataPersistance.SharedInfo.SaveForFutureGames();
+        DataPersistance.SharedInfo.SaveForFutureGames();
     }
     
     public void MuteMusic()
     {
         Music.Pause();
         DataPersistance.SharedInfo.music = 1;
+        DataPersistance.SharedInfo.SaveForFutureGames();
     }
     
     public void MusicDesActivator() //al clicar el boton de mute cambiamos el valor si queremos o no escucar la música

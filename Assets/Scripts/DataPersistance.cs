@@ -11,10 +11,13 @@ public class DataPersistance : MonoBehaviour
     public int music; //valor 0 o 1 del bool
     public string Name; //nombre del personaje elegido
     public int CharacterSlotInt;
+    public int SceneChanges;
+    public int PreviousSceneChanges;
 
     //Para que la instancia sea única
     private void Awake()
     {
+
         // Si la instancia no existe
         if (SharedInfo == null)
         {
@@ -45,6 +48,10 @@ public class DataPersistance : MonoBehaviour
         PlayerPrefs.SetInt("CHARACTER_SLOT", CharacterSlotInt);
 
         PlayerPrefs.SetString("NAME", Name);
+
+        PlayerPrefs.SetInt("SCENECHANGES", SceneChanges);
+
+        //PlayerPrefs.SetInt("PREVIOUS_CHANGES", PreviousSceneChanges);
     }
 
 }
