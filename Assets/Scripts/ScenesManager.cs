@@ -32,4 +32,6 @@ public class ScenesManager : MonoBehaviour
         SceneChanges.text = $"Scene Changes:{DataPersistance.SharedInfo.SceneChanges}";
     }
 
+    
+
 }
