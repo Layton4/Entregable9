@@ -79,6 +79,7 @@ public class Menu_Manager : MonoBehaviour
             LoadCharacter();
 
             LastSceneChangeCounter = PlayerPrefs.GetInt("PREVIOUS_CHANGES");
+            LastSceneChanges.text = ($"Last Scene Changes: {LastSceneChangeCounter}");
 
         }
     }

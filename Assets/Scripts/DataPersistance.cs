@@ -51,7 +51,7 @@ public class DataPersistance : MonoBehaviour
 
         PlayerPrefs.SetInt("SCENECHANGES", SceneChanges);
 
-        //PlayerPrefs.SetInt("PREVIOUS_CHANGES", PreviousSceneChanges);
+        PlayerPrefs.SetInt("PREVIOUS_CHANGES", PreviousSceneChanges);
     }
 
     public void OnApplicationQuit()
